@@ -22,7 +22,7 @@ export const generateTargetSum = (blocks: Block[]): number => {
   return selected.reduce((acc, curr) => acc + curr.value, 0);
 };
 
-export const checkTopHit = (blocks: Block[], maxRows: number): boolean => {
+export const checkTopHit = (blocks: Block[]): boolean => {
   return blocks.some(b => b.row <= 0);
 };
 

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { GameMode, GameState, Block, GRID_COLS, GRID_ROWS, INITIAL_ROWS, TIME_LIMIT, Language, TRANSLATIONS } from './types';
+import { GameMode, GameState, Block, GRID_ROWS, INITIAL_ROWS, TIME_LIMIT, Language, TRANSLATIONS } from './types';
 import { createNewRow, generateTargetSum, checkTopHit, moveBlocksUp } from './utils/gameLogic';
 import Header from './components/Header';
 import Grid from './components/Grid';
@@ -61,7 +61,7 @@ const App: React.FC = () => {
           const newRow = createNewRow(GRID_ROWS - 1);
           updatedBlocks = [...updatedBlocks, ...newRow];
         }
-        const isGameOver = checkTopHit(updatedBlocks, GRID_ROWS);
+        const isGameOver = checkTopHit(updatedBlocks);
         const newTarget = generateTargetSum(updatedBlocks);
         return {
           ...prev,
@@ -87,7 +87,7 @@ const App: React.FC = () => {
             const updatedBlocks = moveBlocksUp(prev.blocks);
             const newRow = createNewRow(GRID_ROWS - 1);
             const finalBlocks = [...updatedBlocks, ...newRow];
-            const isGameOver = checkTopHit(finalBlocks, GRID_ROWS);
+            const isGameOver = checkTopHit(finalBlocks);
             return {
               ...prev,
               blocks: finalBlocks,
